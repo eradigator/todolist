@@ -15,7 +15,8 @@ git clone https://github.com/eradigator/school
 /school/scr/main/resources/application.properties
 задать нужные url, username, password для подключения к БД
 
-Запустить проект
+Запустить проект:
+/school/src/main/java/SchoolApplication -> Run (Ctrl + Shift + F10)
 После окончания запуска, в браузере перейти на localhost:8080
 
 логин: user
