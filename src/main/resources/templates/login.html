@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Greetgo School</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+</head>
+<body>
+<div class="container">
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <div class="row">
+        <div class="col-md-offset-4 col-md-3">
+            <div class="form-login">
+                <form th:action="@{/login}" method="post">
+                    <h4>School Sign In</h4>
+                    <input name="username" class="form-control input-sm chat-input" placeholder="username"/>
+                    <br/>
+                    <input name="password" type="password" class="form-control input-sm chat-input"
+                           placeholder="password"/>
+                    <br/>
+
+                    <span class="group-btn">
+                    <button class="btn btn-primary btn-md">
+                        <span class="glyphicon glyphicon-log-in"></span>
+                        login
+                    </button>
+                    </span>
+
+                    <br/>
+                    <br/>
+
+                    <div class="alert alert-danger" th:if="${param.error}">
+                        Invalid username and password.
+                    </div>
+                    <div class="alert alert-success" th:if="${param.logout}">
+                        You have been logged out.
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</body>
+</html>
