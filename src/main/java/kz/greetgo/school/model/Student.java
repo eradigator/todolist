@@ -1,10 +1,22 @@
 package kz.greetgo.school.model;
 
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
 public class Student {
 
     private Integer id;
+
+    @NotNull
+    @Size(min = 2, max = 30)
     private String firstname;
+
+    @NotNull
+    @Size(min = 1, max = 30)
     private String lastname;
+
+    @NotNull
+    @Size(min = 1, max = 10)
     private String course;
 
     public Integer getId() {

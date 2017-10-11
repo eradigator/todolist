@@ -4,36 +4,51 @@
 <head>
     <meta charset="UTF-8"/>
     <title>Students</title>
-    <link rel="stylesheet" type="text/css" href="style.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
 </head>
 <body>
-<a href="/list">Back to main menu</a>
+<div class="container">
 
-<h1>Students</h1>
+    <br/>
+    <form th:action="@{/logout}" method="post">
+        <button class="btn btn-info btn-lg pull-right">
+            <span class="glyphicon glyphicon-log-out"></span> Log out
+        </button>
+    </form>
 
-<table class="tg">
-    <tr>
-        <th width="80">ID</th>
-        <th width="120">First Name</th>
-        <th width="120">Last Name</th>
-        <th width="120">Course</th>
-        <th width="60">Edit</th>
-        <th width="60">Delete</th>
-    </tr>
+    <h1>Students</h1>
+    <br/>
 
-    <th:block th:each="student:${studentsList}">
+    <table class="table table-striped">
         <tr>
-            <td th:text="${student.id}">...</td>
-            <td th:text="${student.firstname}">...</td>
-            <td th:text="${student.lastname}">...</td>
-            <td th:text="${student.course}">...</td>
-            <td><a th:href="@{'/edit/'+${student.id}}">Edit</a></td>
-            <!--<td><a th:href="@{/edit/${student.id}}">Edit</a></td>-->
-            <td><a th:href="@{'/remove/'+${student.id}}">Delete</a></td>
+            <th width="80">ID</th>
+            <th width="120">First Name</th>
+            <th width="120">Last Name</th>
+            <th width="120">Course</th>
+            <th width="80">Delete</th>
         </tr>
-    </th:block>
-</table>
 
-<a href="/add">Add Student</a>
+        <th:block th:each="student:${studentsList}">
+            <tr>
+                <td th:text="${student.id}">...</td>
+                <td th:text="${student.firstname}">...</td>
+                <td th:text="${student.lastname}">...</td>
+                <td th:text="${student.course}">...</td>
+                <td>
+                    <div>
+                        <a class="btn btn-danger" th:href="@{'/remove/'+${student.id}}">Delete</a>
+                    </div>
+                </td>
+            </tr>
+        </th:block>
+    </table>
+
+    <div>
+        <a class="btn btn-primary" th:href="@{/add}">Add Student</a>
+    </div>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </body>
 </html>
