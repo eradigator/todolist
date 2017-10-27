@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>TODO List</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+</head>
+<body>
+<div class="container">
+    <br/>
+    <a th:href="@{/list}">Back to TODO List</a>
+
+    <h1>Edit Task</h1>
+    <br/>
+
+    <div class="col-sm-4">
+        <form action="#" th:action="@{/edit}" th:object="${task}" method="post">
+            <div class="form-group">
+                <label>Name:
+                    <input class="form-control" th:field="*{taskname}" value="*{taskname}"/>
+                    <a th:if="${#fields.hasErrors('taskname')}" th:errors="*{taskname}">
+                        Name
+                    </a>
+                </label>
+            </div>
+            <div class="form-group">
+                <label>Weekday
+                    <input class="form-control" th:field="*{weekday_id}"/>
+                    <a th:if="${#fields.hasErrors('weekday_id')}" th:errors="*{weekday_id}">
+                        Weekday Error
+                    </a>
+                </label>
+            </div>
+            <input type="hidden" th:field="*{id}" id="task_id" name="task_id" th:value="${id}" />
+            <div>
+                <input class="btn btn-success" type="submit" value="Submit"/>
+                <input class="btn btn-secondary" type="reset" value="Reset"/>
+            </div>
+        </form>
+    </div>
+
+</div>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</body>
+</html>

@@ -12,7 +12,7 @@ import org.testng.annotations.Test;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @DirtiesContext
-public class StudentControllerTest extends AbstractTestNGSpringContextTests {
+public class TaskControllerTest extends AbstractTestNGSpringContextTests {
 
     @Autowired
     private TestRestTemplate restTemplate;

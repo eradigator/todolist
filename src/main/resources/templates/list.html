@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8"/>
+    <title>TODO List</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+</head>
+<body>
+<div class="container">
+
+    <br/>
+    <form th:action="@{/logout}" method="post">
+        <button class="btn btn-info btn-lg pull-right">
+            <span class="glyphicon glyphicon-log-out"></span> Log out
+        </button>
+    </form>
+
+    <h1>TODO List</h1>
+    <br/>
+
+    <table class="table table-striped">
+        <tr>
+            <th width="120">Weekday</th>
+            <!--<th width="80">ID</th>-->
+            <th width="120">Name</th>
+            <th width="120">Done</th>
+            <th width="80">Edit</th>
+            <th width="80">Delete</th>
+        </tr>
+
+        <th:block th:each="todotask:${todolist}">
+            <tr>
+                <td th:text="${todotask.weekday_name}"></td>
+                <!--<td th:text="${todotask.id}">...</td>-->
+                <td th:text="${todotask.taskname}"></td>
+                <td>
+                    <div th:switch="${todotask.done}">
+                        <p th:case="${true}">
+                            <i class="glyphicon glyphicon-ok text-success"> </i>
+                        </p>
+                        <p th:case="${false}">
+                            <a class="btn btn-success" th:href="@{'/done/'+${todotask.id}}">Done</a>
+                        </p>
+                    </div>
+                </td>
+                <td>
+                    <a th:href="@{'/edit/'+${todotask.id}}">
+                        <i class="glyphicon glyphicon-pencil text-warning"></i>
+                    </a>
+                </td>
+                <td>
+                    <a th:href="@{'/remove/'+${todotask.id}}">
+                        <i class="glyphicon glyphicon-trash text-danger"></i>
+                    </a>
+                </td>
+            </tr>
+        </th:block>
+    </table>
+
+    <div>
+        <a class="btn btn-primary" th:href="@{/add}">Add Task</a>
+    </div>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</body>
+</html>

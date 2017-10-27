@@ -16,27 +16,27 @@
         </button>
     </form>
 
-    <h1>Students</h1>
+    <h1>TODO List</h1>
     <br/>
 
     <table class="table table-striped">
         <tr>
             <th width="80">ID</th>
             <th width="120">First Name</th>
-            <th width="120">Last Name</th>
-            <th width="120">Course</th>
+         <!--   <th width="120">Last Name</th>
+            <th width="120">Course</th>-->
             <th width="80">Delete</th>
         </tr>
 
-        <th:block th:each="student:${studentsList}">
+        <th:block th:each="weekday:${weekdayList}">
             <tr>
-                <td th:text="${student.id}">...</td>
-                <td th:text="${student.firstname}">...</td>
-                <td th:text="${student.lastname}">...</td>
-                <td th:text="${student.course}">...</td>
+                <td th:text="${weekday.weekday_id}">...</td>
+                <td th:text="${weekday.weekday_name}">...</td>
+                <!--<td th:text="${task.lastname}">...</td>
+                <td th:text="${task.course}">...</td>-->
                 <td>
                     <div>
-                        <a class="btn btn-danger" th:href="@{'/remove/'+${student.id}}">Delete</a>
+                        <a class="btn btn-danger" th:href="@{'/remove/'+${weekday.weekday_id}}">Delete</a>
                     </div>
                 </td>
             </tr>

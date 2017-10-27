@@ -1,17 +1,17 @@
-package kz.greetgo.school;
+package kz.sanscrit.todolist;
 
-import kz.greetgo.school.model.Student;
+import kz.sanscrit.todolist.model.Task;
 import org.apache.ibatis.type.MappedTypes;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-@MappedTypes(Student.class)
-@MapperScan("kz.greetgo.school.mapper")
+@MappedTypes(Task.class)
+@MapperScan("kz.sanscrit.todolist.mapper")
 @SpringBootApplication
-public class SchoolApplication {
+public class Application {
 
     public static void main(String[] args) {
-        SpringApplication.run(SchoolApplication.class, args);
+        SpringApplication.run(Application.class, args);
     }
 }

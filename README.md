@@ -1,7 +1,7 @@
 Чтобы развернуть проект, нужно:
 
 БД:
-открыть MySQL Workbench, открыть и запустить скрипт school_database.sql
+открыть MySQL Workbench, открыть и запустить скрипт database.sql
 
 Проект:
 открыть Git Bash
@@ -12,11 +12,11 @@ git clone https://github.com/eradigator/school
 в окне "Maven projects need to be imported" нажать Import Changes
 
 в файле:
-/school/scr/main/resources/application.properties
+/todolist/scr/main/resources/application.properties
 задать нужные url, username, password для подключения к БД
 
 Запустить проект:
-/school/src/main/java/SchoolApplication -> Run (Ctrl + Shift + F10)
+/todolist/src/main/java/Application -> Run (Ctrl + Shift + F10)
 После окончания запуска, в браузере перейти на localhost:8080
 
 логин: user
