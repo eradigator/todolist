@@ -25,10 +25,15 @@
             </div>
             <div class="form-group">
                 <label>Weekday
-                    <input class="form-control" th:field="*{weekday_id}"/>
-                    <a th:if="${#fields.hasErrors('weekday_id')}" th:errors="*{weekday_id}">
-                        Weekday Error
-                    </a>
+                    <select name="weekday" th:field="*{weekday_id}">
+                        <option value="1">Monday</option>
+                        <option value="2">Tuesday</option>
+                        <option value="3">Wednesday</option>
+                        <option value="4">Thursday</option>
+                        <option value="5">Friday</option>
+                        <option value="6">Saturday</option>
+                        <option value="7">Sunday</option>
+                    </select>
                 </label>
             </div>
             <div>

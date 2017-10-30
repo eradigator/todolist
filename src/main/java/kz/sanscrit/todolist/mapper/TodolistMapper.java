@@ -1,16 +1,15 @@
 package kz.sanscrit.todolist.mapper;
 
 import kz.sanscrit.todolist.model.Task;
-import kz.sanscrit.todolist.model.Weekday;
-import org.apache.ibatis.annotations.*;
+import org.apache.ibatis.annotations.Insert;
+import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 
 import java.util.List;
 
 @Mapper
 public interface TodolistMapper {
-
-    @Select("SELECT * FROM weekday ORDER BY weekday_id")
-    List<Weekday> findAllWeekdays();
 
     @Select("SELECT * FROM task NATURAL JOIN weekday ORDER BY weekday_id")
     List<Task> findAll();

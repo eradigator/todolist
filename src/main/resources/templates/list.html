@@ -22,7 +22,6 @@
     <table class="table table-striped">
         <tr>
             <th width="120">Weekday</th>
-            <!--<th width="80">ID</th>-->
             <th width="120">Name</th>
             <th width="120">Done</th>
             <th width="80">Edit</th>
@@ -32,7 +31,6 @@
         <th:block th:each="todotask:${todolist}">
             <tr>
                 <td th:text="${todotask.weekday_name}"></td>
-                <!--<td th:text="${todotask.id}">...</td>-->
                 <td th:text="${todotask.taskname}"></td>
                 <td>
                     <div th:switch="${todotask.done}">

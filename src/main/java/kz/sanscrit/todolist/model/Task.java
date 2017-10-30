@@ -17,8 +17,6 @@ public class Task {
 
     private String weekday_name;
 
-    private Weekday weekday;
-
     private boolean done;
 
     public Integer getId() {
@@ -51,14 +49,6 @@ public class Task {
 
     public void setDone(boolean done) {
         this.done = done;
-    }
-
-    public Weekday getWeekday() {
-        return weekday;
-    }
-
-    public void setWeekday(Weekday weekday) {
-        this.weekday = weekday;
     }
 
     public String getWeekday_name() {
