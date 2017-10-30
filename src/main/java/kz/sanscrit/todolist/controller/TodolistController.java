@@ -2,7 +2,8 @@ package kz.sanscrit.todolist.controller;
 
 import kz.sanscrit.todolist.mapper.TodolistMapper;
 import kz.sanscrit.todolist.model.Task;
-import kz.sanscrit.todolist.model.Weekday;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -14,6 +15,7 @@ import java.util.List;
 @Controller
 public class TodolistController {
 
+    private Logger log = LoggerFactory.getLogger(TodolistController.class);
     private TodolistMapper todolistMapper;
 
     public TodolistController(TodolistMapper todolistMapper) {
@@ -37,13 +39,6 @@ public class TodolistController {
         return "list";
     }
 
-    @RequestMapping("/weekdays")
-    public String weekdayList(Model model) {
-        List<Weekday> weekdayList = todolistMapper.findAllWeekdays();
-        model.addAttribute("weekdayList", weekdayList);
-        return "weekdays";
-    }
-
     @GetMapping("/add")
     public String addForm(Task task) {
         return "addTask";
@@ -55,6 +50,7 @@ public class TodolistController {
             return "addTask";
         } else {
             todolistMapper.createTask(task);
+            log.info("Task " + task.getTaskname() + " added");
             return "redirect:/list";
         }
     }
@@ -68,6 +64,7 @@ public class TodolistController {
     @RequestMapping("/remove/{id}")
     public String removeTask(@PathVariable("id") int id) {
         todolistMapper.removeById(id);
+        log.info("Task id:" + id + " removed");
         return "redirect:/list";
     }
 
@@ -79,8 +76,7 @@ public class TodolistController {
     }
 
     @PostMapping("/edit")
-    public String editTask(@Valid @ModelAttribute("task") Task task,
-                           BindingResult bindingResult) {
+    public String editTask(@Valid @ModelAttribute("task") Task task, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
             return "addTask";
         } else {
