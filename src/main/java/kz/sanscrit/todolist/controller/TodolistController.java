@@ -2,8 +2,7 @@ package kz.sanscrit.todolist.controller;
 
 import kz.sanscrit.todolist.mapper.TodolistMapper;
 import kz.sanscrit.todolist.model.Task;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -15,7 +14,6 @@ import java.util.List;
 @Controller
 public class TodolistController {
 
-    private Logger log = LoggerFactory.getLogger(TodolistController.class);
     private TodolistMapper todolistMapper;
 
     public TodolistController(TodolistMapper todolistMapper) {
@@ -50,7 +48,6 @@ public class TodolistController {
             return "addTask";
         } else {
             todolistMapper.createTask(task);
-            log.info("Task " + task.getTaskname() + " added");
             return "redirect:/list";
         }
     }
@@ -64,7 +61,6 @@ public class TodolistController {
     @RequestMapping("/remove/{id}")
     public String removeTask(@PathVariable("id") int id) {
         todolistMapper.removeById(id);
-        log.info("Task id:" + id + " removed");
         return "redirect:/list";
     }
 
